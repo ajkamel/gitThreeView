@@ -2,12 +2,12 @@
 
 <p>
   <strong>Username:</strong>
-  <%= @user.username %>
+  <%= @user.name %>
 </p>
 
 <p>
   <strong>Github key:</strong>
-  <%= @user.github_key %>
+  <%= @user.github_access_token %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
