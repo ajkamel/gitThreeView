@@ -13,7 +13,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require tween.min
+//= require three.min
+//= require stats.min
+//= require Detector
 //= require turbolinks
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+
+$(document).ready(function() {
+  createGraph();
+});

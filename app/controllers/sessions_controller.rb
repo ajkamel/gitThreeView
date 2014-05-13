@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def index
-    @oauth_link = "https://github.com/login/oauth/authorize?client_id=#{ENV['GITHUB_CLIENT_ID']}"
+    @oauth_link = User.oauth_link
   end
 
   def callback

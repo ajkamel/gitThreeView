@@ -67,3 +67,30 @@ div {
     list-style: square;
   }
 }
+
+#graph-canvas {
+    margin: 0px;
+    padding: 0px;
+    color: #fff;
+    font-family: Monospace;
+    font-size: 13px;
+    text-align: center;
+    font-weight: bold;
+    background-color: #000;
+    overflow: hidden;
+    z-index: 1;
+}
+
+#graph {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100px;
+    height: 60px;
+    color: #000;
+    background-color: #a9a9a9;
+    padding: 5px;
+    font-family: Monospace;
+    font-size: 13px;
+    z-index: 100;
+}
