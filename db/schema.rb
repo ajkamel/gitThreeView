@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140513004908) do
+ActiveRecord::Schema.define(version: 20140514155347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "commits", force: true do |t|
+    t.string "sha"
+    t.string "committer"
+    t.date   "date"
+  end
 
   create_table "graphs", force: true do |t|
     t.text    "graph_key"
@@ -23,6 +29,7 @@ ActiveRecord::Schema.define(version: 20140513004908) do
 
   create_table "repos", force: true do |t|
     t.string "title"
+    t.string "repo_path"
     t.text   "description"
     t.string "owner"
     t.string "repo_image"

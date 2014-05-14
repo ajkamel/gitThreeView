@@ -75,7 +75,8 @@ function createGraph() {
         dynamicHeight.y = 1;
         var x_drawn = false;
         var length = {x:10, y:10};
-        //todo: this is cheating. You'll need to find a max if you want to use real data.
+        //todo: FIX this area to bring in labels corresponding to Y
+        //
         max = ((length.x - 1) * (length.y - 1)) + 5;
         for (var y = 0; y < length.y; y++) {
             drawYLabel(y, length);
@@ -120,7 +121,7 @@ function createGraph() {
         color.offsetHSL(0.4 + 0.8 * height / max, 0.85, 1);
         mat.color.setHex(color.getHex());
 
-        grid[running].geo = new THREE.CubeGeometry(8, 2, 8);
+        grid[running].geo = new THREE.CubeGeometry(5, 2, 8);
         grid[running].geo.dynamic = true;
         grid[running].geo.verticesNeedUpdate = true;
         grid[running].baseColor = color.getHex();

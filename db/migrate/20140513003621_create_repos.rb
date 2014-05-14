@@ -2,6 +2,7 @@ class CreateRepos < ActiveRecord::Migration
   def change
     create_table :repos do |t|
       t.string :title
+      t.string :repo_path
       t.text :description
       t.string :owner
       t.string :repo_image
