@@ -1,4 +1,4 @@
-#gitToThree
+#gitThreeView
 
 gitThreeView is a simple app which you can use to visualize your Github repositories in 3D.
 
