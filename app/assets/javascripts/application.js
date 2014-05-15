@@ -23,5 +23,18 @@
 $(function(){ $(document).foundation(); });
 
 $(document).ready(function() {
-  createGraph();
+
+  $('.repo-link').on('click', getGraphData);
+    //Make AJAX Request to welcome page for class name
+    function getGraphData(event){
+        console.log(event.target.href);
+        event.preventDefault();
+        $.getJSON(event.target.href, function(data) {
+            console.log(data);
+            $("#graph-canvas").html("");
+            createGraph(data);
+        });
+    }
+
+  // createGraph();
 });

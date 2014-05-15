@@ -1,4 +1,4 @@
-function createGraph() {
+function createGraph(data) {
 
     if (!Detector.webgl) Detector.addGetWebGLMessage();
     var clock = new THREE.Clock();
@@ -23,6 +23,25 @@ function createGraph() {
     THREE.RightAlign = -1;
     THREE.TopAlign = -1;
     THREE.BottomAlign = 1;
+
+    var graphData = data;
+    testData = data;
+    committers = _.uniq( _.pluck( graphData, 'committer' ) ).sort();
+
+    var date1 = _.pluck( graphData, 'date').sort().shift();
+    var date2 = _.pluck( graphData, 'date').sort().pop();
+    dates = _.pluck( graphData, 'date').sort();
+    var startDate = date1.split('-');
+    var endDate = date2.split('-');
+    graphDays = getTotalDays(startDate, endDate);
+
+     function getTotalDays(start, end){
+
+        var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+        firstDate = new Date(start[0], start[1], start[2]);
+        secondDate = new Date(end[0], end[1], end[2]);
+        diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay))) + 1;
+    }
 
     init();
     animate();
@@ -67,16 +86,19 @@ function createGraph() {
 
         dynamicHeight.y = 1;
         var x_drawn = false;
-        var length = {x:10, y:10};
+        var length = {x:diffDays, y:committers.length};
         //todo: FIX this area to bring in labels corresponding to Y
-        //
         max = ((length.x - 1) * (length.y - 1)) + 5;
+
+
         for (var y = 0; y < length.y; y++) {
+            //Iterate over data and insert into variables for placement in graph
             drawYLabel(y, length);
             for (var x = 0; x < length.x; x++) {
                 grid[running] = [];
                 if(x_drawn === false){drawXLabel(x, length);}
-                grid[running].height = (x * y) + 5;
+                // grid[running].height = (x * y) + 5;
+
                 drawBar(y, x, length, grid[running].height);
                 running++;
             }
@@ -87,6 +109,7 @@ function createGraph() {
         window.addEventListener('resize', onWindowResize, false);
         document.addEventListener('mousemove', onDocumentMouseMove, false);
     }
+
 
     function updateBar(j) {
         grid[j].geo.verticesNeedUpdate = true;
@@ -106,15 +129,13 @@ function createGraph() {
     }
 
     function drawBar(y, x, length, height) {
-        //Draws the bars
-        //Colors are coming out different when set as HSL then
-        //converted to HEX.
+        //Draws the bars for Commits
         var mat = new THREE.MeshPhongMaterial({color:0xFFAA55});
         var color = new THREE.Color();
         color.offsetHSL(0.4 + 0.8 * height / max, 0.85, 1);
         mat.color.setHex(color.getHex());
 
-        grid[running].geo = new THREE.CubeGeometry(5, 2, 8);
+        grid[running].geo = new THREE.CubeGeometry(5, 2, 5);
         grid[running].geo.dynamic = true;
         grid[running].geo.verticesNeedUpdate = true;
         grid[running].baseColor = color.getHex();
@@ -130,6 +151,7 @@ function createGraph() {
 
         var update = partial(updateBar, running);
         var complete = partial(completeBar, running);
+        //Add Animation to Grid Bars Verticals  grid[running] represents the arry being passed to three.js
         grid[running].tween = new TWEEN.Tween(dynamicHeight)
                 .to({y:(height / max * 80)}, 3500)
                 .easing(TWEEN.Easing.Elastic.Out)
@@ -140,8 +162,8 @@ function createGraph() {
     }
 
     function drawYLabel(y, length) {
-        //Marks 1-10 on the graph
-        var title = alignPlane(createText2D(y + 1), THREE.CenterAlign, THREE.CenterAlign);
+        //Marks num Collaborators on graph
+        var title = alignPlane(createText2D( committers[y] ), THREE.CenterAlign, THREE.CenterAlign);
         title.scale.set(0.25, 0.25, 0.25);
         title.position.x = (-1 - (length.x - 1) / 2) * 16;
         title.position.z = -(y - (length.y - 1) / 2) * 16;
@@ -151,14 +173,15 @@ function createGraph() {
     }
 
     function drawXLabel(x, length) {
-        //Marks A-J on the graph
-        var c = String.fromCharCode(x + 65);
-        var title = alignPlane(createText2D(c), THREE.CenterAlign, THREE.CenterAlign);
+        //Marks alph Date on graph
+        // var date = String.fromCharCode(x + 65);
+        // var dates = "get date values here"
+        var title = alignPlane(createText2D(x + 1), THREE.CenterAlign, THREE.CenterAlign);
         title.scale.set(0.25, 0.25, 0.25);
         title.position.x = (x - (length.x - 1) / 2) * 16;
         title.position.z = -(-1 - (length.y - 1) / 2) * 16;
         title.position.y = 1;
-        title.rotation.x = -Math.PI / 2;
+        title.rotation.x = -Math.PI / 3;
         scene.add(title);
     }
 

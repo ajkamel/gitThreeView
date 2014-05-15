@@ -5,7 +5,10 @@
     <div class="large-3 columns">
       <h1><%= image_tag('g3view.png', id: 'logo') %></h1>
     </div>
-    <div class="large-9 columns">
+    <div class="large-6 columns">
+        <h3>gitThreeView <small>a git visualization tool</small></h3>
+    </div>
+    <div class="large-3 columns">
       <ul class="inline-list right">
         <li><%= link_to "Account", @user %></li>
         <li><a href="/logout">Sign Out</a></li>
@@ -20,8 +23,6 @@
     <!-- Main Content Section -->
     <!-- This has been source ordered to come first in the markup (and on small devices) but to be to the right of the nav on larger screens -->
     <div class="large-9 push-3 columns">
-
-      <h3>gitThreeView <small>a git visualization tool</small></h3>
 
       <div id="graph-canvas"></div>
     </div>
