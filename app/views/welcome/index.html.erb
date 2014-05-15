@@ -32,8 +32,8 @@
     <div class="large-3 pull-9 columns">
 
       <ul class="side-nav">
-      <% @graphs.each do |graph| %>
-        <li><%= graph.title %><%= link_to "Graph",  graph %></li>
+      <% @repos.each do |repo| %>
+        <li><%= repo.title %><%= link_to "Repo" + repo.id,  repo %></li>
       <% end %>
         <li><a href="#">Repo 2</a></li>
         <li><a href="#">Repo 3</a></li>

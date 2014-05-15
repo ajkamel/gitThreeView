@@ -17,33 +17,27 @@ ActiveRecord::Schema.define(version: 20140514155347) do
   enable_extension "plpgsql"
 
   create_table "commits", force: true do |t|
-    t.string "sha"
-    t.string "committer"
-    t.date   "date"
-  end
-
-  create_table "graphs", force: true do |t|
-    t.text    "graph_key"
+    t.string  "sha"
+    t.string  "committer"
+    t.integer "additions"
+    t.integer "deletions"
+    t.date    "date"
     t.integer "repo_id"
   end
 
+  add_index "commits", ["repo_id"], name: "index_commits_on_repo_id", using: :btree
+
   create_table "repos", force: true do |t|
-    t.string "title"
-    t.string "repo_path"
-    t.text   "description"
-    t.string "owner"
-    t.string "repo_image"
-    t.date   "start_date"
-    t.date   "update_date"
+    t.string  "title"
+    t.string  "repo_path"
+    t.text    "description"
+    t.string  "owner"
+    t.date    "start_date"
+    t.date    "update_date"
+    t.integer "user_id"
   end
 
-  create_table "repos_users", id: false, force: true do |t|
-    t.integer "user_id", null: false
-    t.integer "repo_id", null: false
-  end
-
-  add_index "repos_users", ["repo_id", "user_id"], name: "index_repos_users_on_repo_id_and_user_id", using: :btree
-  add_index "repos_users", ["user_id", "repo_id"], name: "index_repos_users_on_user_id_and_repo_id", using: :btree
+  add_index "repos", ["user_id"], name: "index_repos_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"

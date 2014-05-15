@@ -5,9 +5,11 @@ class CreateRepos < ActiveRecord::Migration
       t.string :repo_path
       t.text :description
       t.string :owner
-      t.string :repo_image
       t.date :start_date
       t.date :update_date
+      t.references :user
     end
+
+    add_index :repos, :user_id
   end
 end

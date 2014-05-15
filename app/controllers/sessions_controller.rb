@@ -6,14 +6,16 @@ class SessionsController < ApplicationController
 
   def callback
     oauth_response = User.oauth_response(params["code"])
-    client = User.new_client(oauth_response).user
+    client = User.new_client(oauth_response)
     session[:github_access_token] = oauth_response["access_token"]
 
     unless User.exists?(name: client.login)
-      User.create(name: client.login, github_access_token: oauth_response["access_token"], avatar: "#{client.avatar}")
+      User.create(name: client.login,
+        github_access_token: oauth_response["access_token"],
+        avatar: client.user.avatar_url,
+        email: client.user.email )
     end
-
-
+    binding.pry
     redirect_to welcome_index_path
   end
 
