@@ -29,9 +29,6 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.6)
     arel (5.0.1.20140414130214)
-    better_errors (1.1.0)
-      coderay (>= 1.0.0)
-      erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
@@ -140,7 +137,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  better_errors
   binding_of_caller
   coffee-rails (~> 4.0.0)
   foundation-rails

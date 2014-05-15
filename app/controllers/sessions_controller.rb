@@ -15,7 +15,6 @@ class SessionsController < ApplicationController
         avatar: client.user.avatar_url,
         email: client.user.email )
     end
-    binding.pry
     redirect_to welcome_index_path
   end
 

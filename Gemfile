@@ -27,7 +27,7 @@ gem 'foundation-rails'
 gem 'rest-client'
 
 group :development, :test do
-    gem 'better_errors'
+    # gem 'better_errors'
     gem 'binding_of_caller'
     gem 'pry'
 end

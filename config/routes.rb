@@ -4,14 +4,14 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback' => "sessions#callback"
 
-  resources :welcome, :only => [:index]
+  resources :welcome, :only => [:index, :get_repo_data]
   resources :users, :only => [:show]
-  resources :repos, :only => [:index, :show, :create, :update, :destroy] do
-  resources :graphs, shallow: true
-  end
+  # resources :repos, :only => [:index, :show, :create, :update, :destroy]
 
-  # get "sessions/index"
   get "github/callback" => "sessions#callback"
   get "/logout" => "sessions#destroy"
+  get '/repos/:id' => "welcome#get_commit_data"
+  get '/repos/search' => "welcome#find_user"
+
 
 end

@@ -32,13 +32,6 @@ function createGraph() {
         renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
         // document.body.appendChild(renderer.domElement);
         document.getElementById("graph-canvas").appendChild(renderer.domElement);
-        //Stat Bar
-        // stats = new Stats();
-        // stats.domElement.style.position = 'absolute';
-        // stats.domElement.style.top = '70px';
-        // // document.body.appendChild(stats.domElement);
-        // document.getElementById("graph-canvas").appendChild(renderer.domElement);
-
 
         renderer.shadowMapEnabled = true;
         renderer.shadowMapSoft = true;
@@ -173,7 +166,7 @@ function createGraph() {
         size = size || 24;
         var canvas = document.createElement('canvas');
         var ctx = canvas.getContext('2d');
-        var fontStr = (size + 'px ') + (font || 'Arial');
+        var fontStr = (size + 'px ') + (font || 'Helvetica');
         ctx.font = fontStr;
         var w = ctx.measureText(text).width;
         var h = Math.ceil(size * 1.25);
@@ -258,7 +251,6 @@ function createGraph() {
     function animate() {
         window.requestAnimationFrame(animate, renderer.domElement);
         render();
-        // stats.update();
     }
 
     function render() {
