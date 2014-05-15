@@ -8,10 +8,15 @@ Enjoy.
 ##Technologies
 
 Ruby on Rails
+
 Javascript
+
 jQuery
+
 Github API / Octokit.rb
-Three.js
+
+Three.js (webGL 3D framework)
+Tween.js (animate 3D models)
 
 
 ##User Stories 
@@ -20,4 +25,7 @@ https://trello.com/b/IKO6pa5u/gittothree
 
 ##ERD
 
+![gitThreeView](https://raw.githubusercontent.com/ajkamel/gitThreeView/master/githreeview_erd.png)
+
 ##Site
+
