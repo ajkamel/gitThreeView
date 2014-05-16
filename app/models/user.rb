@@ -10,9 +10,9 @@ class User < ActiveRecord::Base
     return Octokit::Client.new :access_token => response["access_token"]
   end
 
-  def get_repos(client, access_token)
+  def get_repos(client)
 
-    Octokit::Client.new(access_token: access_token)
+    # Octokit::Client.new(access_token: access_token)
 
     @user_id = self.id
     client.repos.each do |repo|
