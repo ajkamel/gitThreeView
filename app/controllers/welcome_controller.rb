@@ -8,8 +8,6 @@ class WelcomeController < ApplicationController
         ##Looks for all the Repos to pass to the view if none exist it will search Octokit for them and seed
         if @current_user.repos.length < 1
           all_repos = @current_user.get_repos(client)
-          index =
-          repos_data = Repo.get_repo_stats(client)
           @repos = @current_user.repos
         else
           @repos = @current_user.repos
@@ -17,6 +15,7 @@ class WelcomeController < ApplicationController
 
   end
 
+  #Add this to the view later to search for user in database
   def find_user
     @current_user = User.find_by github_access_token: session[:github_access_token]
   end
@@ -25,10 +24,8 @@ class WelcomeController < ApplicationController
   def get_commit_data
 
     repo = Repo.find(params[:id])
-
-    index
-
-    if repo.commits.length < 2
+    #Fix this logic for later
+    if repo.commits.length  < 5
       repo.get_repo_stats(client)
       @commit_data = repo.commits
     else

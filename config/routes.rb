@@ -6,7 +6,6 @@ Rails.application.routes.draw do
 
   resources :welcome, :only => [:index, :get_repo_data]
   resources :users, :only => [:show]
-  # resources :repos, :only => [:index, :show, :create, :update, :destroy]
 
   get "github/callback" => "sessions#callback"
   get "/logout" => "sessions#destroy"

@@ -4,8 +4,6 @@ class Repo < ActiveRecord::Base
   has_many :commits
 
   def get_repo_stats(client)
-    # Octokit::Client.new(access_token: access_token)
-    # repo_index =
     # client.repos[:].rels[:commits].get.data
 
     commits = client.commits(self.repo_path)

@@ -12,8 +12,6 @@ class User < ActiveRecord::Base
 
   def get_repos(client)
 
-    # Octokit::Client.new(access_token: access_token)
-
     @user_id = self.id
     client.repos.each do |repo|
         repo = Repo.create(
@@ -22,13 +20,11 @@ class User < ActiveRecord::Base
           description: repo.description,
           owner: repo.owner.login,
           start_date: repo.created_at,
-          update_date: repo.updated_at
-           )
+          update_date: repo.updated_at)
 
         repo.user_id = @user_id
         repo.save
     end
 
   end
-
 end
