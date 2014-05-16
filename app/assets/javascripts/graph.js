@@ -170,7 +170,7 @@ function createGraph(data) {
 
     function drawYLabel(y, length) {
         //Marks num Collaborators on graph
-        var title = alignPlane(createText2D( committers[y] ), THREE.CenterAlign, THREE.CenterAlign);
+        var title = alignPlane(createText2D( committers[y] + "         " ), THREE.CenterAlign, THREE.CenterAlign);
         title.scale.set(0.25, 0.25, 0.25);
         title.position.x = (-1 - (length.x - 1) / 2) * 16;
         title.position.z = -(y - (length.y - 1) / 2) * 16;
@@ -181,8 +181,6 @@ function createGraph(data) {
 
     function drawXLabel(x, length) {
         //Marks alph Date on graph
-        // var date = String.fromCharCode(x + 65);
-        // var dates = "get date values here"
         var title = alignPlane(createText2D(x + 1), THREE.CenterAlign, THREE.CenterAlign);
         title.scale.set(0.25, 0.25, 0.25);
         title.position.x = (x - (length.x - 1) / 2) * 16;
