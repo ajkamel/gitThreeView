@@ -43,6 +43,10 @@ function createGraph(data) {
         diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay))) + 1;
     }
 
+    function dailyCommits(x, y){
+        return _.where( graphData, { committer: committers[y], date: dates[x] } ).length;
+    }
+
     init();
     animate();
 
@@ -98,7 +102,8 @@ function createGraph(data) {
                 grid[running] = [];
                 if(x_drawn === false){drawXLabel(x, length);}
                 // grid[running].height = (x * y) + 5;
-
+                grid[running].height = dailyCommits(x, y);
+                console.log(grid[running.height]);
                 drawBar(y, x, length, grid[running].height);
                 running++;
             }
@@ -109,6 +114,8 @@ function createGraph(data) {
         window.addEventListener('resize', onWindowResize, false);
         document.addEventListener('mousemove', onDocumentMouseMove, false);
     }
+
+
 
 
     function updateBar(j) {
