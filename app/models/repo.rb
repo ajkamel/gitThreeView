@@ -4,7 +4,6 @@ class Repo < ActiveRecord::Base
   has_many :commits
 
   def get_repo_stats(client)
-    # client.repos[:].rels[:commits].get.data
 
     commits = client.commits(self.repo_path)
     @repo_url = self.repo_path

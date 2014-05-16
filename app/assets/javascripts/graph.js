@@ -90,8 +90,8 @@ function createGraph(data) {
 
         dynamicHeight.y = 1;
         var x_drawn = false;
+        //This sets the times it iterates to build graph
         var length = {x:diffDays, y:committers.length};
-        //todo: FIX this area to bring in labels corresponding to Y
         max = ((length.x - 1) * (length.y - 1)) + 5;
 
 
@@ -169,7 +169,7 @@ function createGraph(data) {
     }
 
     function drawYLabel(y, length) {
-        //Marks num Collaborators on graph
+        //Marks Collaborators on graph
         var title = alignPlane(createText2D( committers[y] + "         " ), THREE.CenterAlign, THREE.CenterAlign);
         title.scale.set(0.25, 0.25, 0.25);
         title.position.x = (-1 - (length.x - 1) / 2) * 16;
@@ -180,7 +180,7 @@ function createGraph(data) {
     }
 
     function drawXLabel(x, length) {
-        //Marks alph Date on graph
+        //Marks Date on graph
         var title = alignPlane(createText2D(x + 1), THREE.CenterAlign, THREE.CenterAlign);
         title.scale.set(0.25, 0.25, 0.25);
         title.position.x = (x - (length.x - 1) / 2) * 16;
