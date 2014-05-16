@@ -16,10 +16,14 @@ jQuery
 Github API / Octokit.rb
 
 Three.js (webGL 3D framework)
+
 Tween.js (animate 3D models)
 
+Underscore.js
 
-##User Stories 
+Postgresql
+
+##User Stories
 
 https://trello.com/b/IKO6pa5u/gittothree
 
@@ -28,4 +32,6 @@ https://trello.com/b/IKO6pa5u/gittothree
 ![gitThreeView](https://raw.githubusercontent.com/ajkamel/gitThreeView/master/githreeview_erd.png)
 
 ##Site
+
+http://gitthreeview.herokuapp.com/
 

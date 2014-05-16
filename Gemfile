@@ -14,6 +14,7 @@ gem 'spring',        group: :development
 gem "octokit", "~> 3.0"
 gem 'foundation-rails'
 gem 'rest-client'
+gem 'rails_12factor'
 
 group :development, :test do
     gem 'better_errors'
