@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
 
+  validates(:name, :github_access_token, presence: true)
+  validates(:name, uniqueness: true)
+  validates(:github_access_token, uniqueness: true)
+
   has_many :repos
 
   def self.oauth_response(code)
@@ -11,7 +15,6 @@ class User < ActiveRecord::Base
   end
 
   def get_repos(client)
-
     @user_id = self.id
     client.repos.each do |repo|
         repo = Repo.create(
@@ -25,6 +28,5 @@ class User < ActiveRecord::Base
         repo.user_id = @user_id
         repo.save
     end
-
   end
 end
