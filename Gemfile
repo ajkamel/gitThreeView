@@ -22,5 +22,7 @@ group :development, :test do
     gem 'pry-rails'
     gem 'rack-mini-profiler'
     gem 'bullet'
+    gem 'rspec-rails', '~> 3.0.0.beta'
+    gem 'shoulda-matchers'
+    gem 'capybara'
 end
-

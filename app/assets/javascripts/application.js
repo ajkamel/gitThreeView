@@ -36,7 +36,5 @@ $(document).ready(function() {
         }).done (function(data) {
             createGraph(data);
         });
-
     }
-
 });
