@@ -34,13 +34,15 @@ function createGraph(data) {
     var startDate = date1.split('-');
     var endDate = date2.split('-');
     graphDays = getTotalDays(startDate, endDate);
+
     //Parse and Filter Github Data for Days repo is open
-     function getTotalDays(start, end){
+    function getTotalDays(start, end){
         var oneDay = 24*60*60*1000;
         firstDate = new Date(start[0], start[1], start[2]);
         secondDate = new Date(end[0], end[1], end[2]);
         diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay))) + 1;
     }
+
     //Parse and Filter Github Data for number of Commits per day
     function dailyCommits(x, y){
         return _.where( graphData, { committer: committers[y], date: dates[x] } ).length;
@@ -77,8 +79,10 @@ function createGraph(data) {
         ambientLight.position.set(20, 150, -120);
         scene.add(ambientLight);
         //Add plane which graph sits
+        var collabsize =  (committers.length > 10) ? (committers.length * 50) :  150;
+        var daysize = (diffDays > 10 ) ? (diffDays * 30) : 150;
         var plane = new THREE.Mesh(
-                new THREE.CubeGeometry(300, 20, 0),
+                new THREE.CubeGeometry(daysize, 20, collabsize),
                 new THREE.MeshPhongMaterial({color:0xFFFFFF}));
         plane.position.y = -10;
         plane.receiveShadow = true;
