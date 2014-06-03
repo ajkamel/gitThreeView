@@ -34,15 +34,14 @@ function createGraph(data) {
     var startDate = date1.split('-');
     var endDate = date2.split('-');
     graphDays = getTotalDays(startDate, endDate);
-
+    //Parse and Filter Github Data for Days repo is open
      function getTotalDays(start, end){
-
-        var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+        var oneDay = 24*60*60*1000;
         firstDate = new Date(start[0], start[1], start[2]);
         secondDate = new Date(end[0], end[1], end[2]);
         diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay))) + 1;
     }
-
+    //Parse and Filter Github Data for number of Commits per day
     function dailyCommits(x, y){
         return _.where( graphData, { committer: committers[y], date: dates[x] } ).length;
     }
@@ -53,7 +52,6 @@ function createGraph(data) {
     function init() {
         renderer = new THREE.WebGLRenderer({antialias:true});
         renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-        // document.body.appendChild(renderer.domElement);
         document.getElementById("graph-canvas").appendChild(renderer.domElement);
 
         renderer.shadowMapEnabled = true;
@@ -78,9 +76,9 @@ function createGraph(data) {
         ambientLight = new THREE.PointLight(0xFFFFFF);
         ambientLight.position.set(20, 150, -120);
         scene.add(ambientLight);
-
+        //Add plane which graph sits
         var plane = new THREE.Mesh(
-                new THREE.CubeGeometry(200, 20, 200),
+                new THREE.CubeGeometry(300, 20, 0),
                 new THREE.MeshPhongMaterial({color:0xFFFFFF}));
         plane.position.y = -10;
         plane.receiveShadow = true;
@@ -94,7 +92,6 @@ function createGraph(data) {
         var length = {x:diffDays, y:committers.length};
         max = ((length.x - 1) * (length.y - 1)) + 5;
 
-
         for (var y = 0; y < length.y; y++) {
             //Iterate over data and insert into variables for placement in graph
             drawYLabel(y, length);
@@ -103,7 +100,6 @@ function createGraph(data) {
                 if(x_drawn === false){drawXLabel(x, length);}
                 // grid[running].height = (x * y) + 5;
                 grid[running].height = dailyCommits(x, y);
-                console.log(grid[running.height]);
                 drawBar(y, x, length, grid[running].height);
                 running++;
             }
@@ -114,9 +110,6 @@ function createGraph(data) {
         window.addEventListener('resize', onWindowResize, false);
         document.addEventListener('mousemove', onDocumentMouseMove, false);
     }
-
-
-
 
     function updateBar(j) {
         grid[j].geo.verticesNeedUpdate = true;
