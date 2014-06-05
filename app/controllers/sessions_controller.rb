@@ -1,9 +1,8 @@
 class SessionsController < ApplicationController
 
   def index
-    demoID = User.find_by(name: "ajkamel").github_access_token
     @oauth_link = "https://github.com/login/oauth/authorize?client_id=#{ENV['GITHUB_CLIENT_ID']}"
-    @demouser= "/demo/#{demoID}"
+    @demouser= "/demo"
   end
 
   def callback
@@ -21,8 +20,9 @@ class SessionsController < ApplicationController
   end
 
   def demo
-    client = User.new_client(params[:id])
-    session[:github_access_token] = params[:id]
+    demoID = User.find_by(name: "ajkamel").github_access_token
+    client = User.new_client(demoID)
+    session[:github_access_token] = demoID
     redirect_to welcome_index_path
   end
 

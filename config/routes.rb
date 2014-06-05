@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   get "/logout" => "sessions#destroy"
   get '/repos/:id' => "welcome#get_commit_data"
   get '/repos/search' => "welcome#find_user"
-  get '/demo/:id' => "sessions#demo"
+  get '/demo' => "sessions#demo"
 
 end
