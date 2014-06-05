@@ -1,7 +1,9 @@
 class SessionsController < ApplicationController
 
   def index
+    user = User.all.first.github_access_token
     @oauth_link = "https://github.com/login/oauth/authorize?client_id=#{ENV['GITHUB_CLIENT_ID']}"
+    @demouser= "/github/callback/#{user}"
   end
 
   def callback

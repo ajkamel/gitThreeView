@@ -11,6 +11,5 @@ Rails.application.routes.draw do
   get "/logout" => "sessions#destroy"
   get '/repos/:id' => "welcome#get_commit_data"
   get '/repos/search' => "welcome#find_user"
-
-
+  get '/demo' => "sessions#callback"
 end

@@ -20,7 +20,7 @@ group :development, :test do
     gem 'better_errors'
     gem 'binding_of_caller'
     gem 'pry-rails'
-    gem 'rack-mini-profiler'
+    # gem 'rack-mini-profiler'
     gem 'bullet'
     gem 'rspec-rails', '~> 3.0.0.beta'
     gem 'shoulda-matchers'
