@@ -22,6 +22,7 @@ class WelcomeController < ApplicationController
   def get_commit_data
     repo = Repo.find(params[:id])
     #Fix this logic for later
+    @repoinfo = repo
     if repo.commits.length  < 2
       repo.get_repo_stats(client)
       @commit_data = repo.commits

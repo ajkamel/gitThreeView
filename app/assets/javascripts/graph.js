@@ -109,6 +109,7 @@ function createGraph(data) {
             }
             x_drawn = true;
         }
+        // drawRepoLabel(data, daysize, collabsize);
         renderer.render(scene, camera);
         projector = new THREE.Projector();
         window.addEventListener('resize', onWindowResize, false);
@@ -188,9 +189,15 @@ function createGraph(data) {
     }
 
     function drawRepoLabel() {
-
+      var title = alignPlane(createText2D(  ), THREE.CenterAlign, THREE.CenterAlign);
+      title.scale.set(0.25, 0.25, 0.25);
+      title.position.x = (-1 - (length.x - 1) / 2) * 16;
+      title.position.z = -(y - (length.y - 1) / 2) * 16;
+      title.position.y = 1;
+      title.rotation.x = -Math.PI / 2;
+      scene.add(title);
     }
-    
+
     function createTextCanvas(text, color, font, size) {
         size = size || 24;
         var canvas = document.createElement('canvas');
@@ -339,3 +346,5 @@ function createGraph(data) {
     }
 
 };
+
+//Made with Three.js, from highly tweaked experiments
