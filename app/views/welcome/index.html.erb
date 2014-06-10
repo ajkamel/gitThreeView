@@ -1,4 +1,3 @@
-
 <!-- Header and Nav -->
 
   <div class="row">
@@ -23,23 +22,18 @@
     <!-- Main Content Section -->
     <!-- This has been source ordered to come first in the markup (and on small devices) but to be to the right of the nav on larger screens -->
     <div class="large-9 push-3 columns">
-
       <div id="graph-canvas"></div>
     </div>
-
 
     <!-- Nav Sidebar -->
     <!-- This is source ordered to be pulled to the left on larger screens -->
     <div class="large-3 pull-9 columns">
-
       <ul class="side-nav">
         <% @repos.each do |repo| %>
           <li><%= link_to "#{repo.title}",  "/repos/#{repo.id}" , class: "repo-link", id: "#{repo.id}", remote: true %></li>
         <% end %>
       </ul>
-
     </div>
-
   </div>
 
 
@@ -61,4 +55,3 @@
       </div>
     </div>
   </footer>
-
