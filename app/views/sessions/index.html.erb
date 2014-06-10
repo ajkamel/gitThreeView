@@ -1,21 +1,25 @@
-<div class="row">
-    <div class="small-3 columns">
-        <%= link_to "Try it out", @demouser %>
-    </div>
-    <div class="small-3 cloumns">
-        <%= link_to "Sign in",  @oauth_link %>
-    </div>
-</div>
-<div class="row">
-  <div id="large-6 large-center columns">
-    <div id="sessions-text">
+
+<div id="session-wrapper">
+  <div class="row">
+  <div class="small-6 columns" id="sessions-text">
       <h1>gitThreeView</h1>
-    </div>
   </div>
 </div>
 
 <div class="row">
-  <div class="small-9 columns">
-    gitThreeView is a project that takes your github repository and allows you to see your data in a visual manner to better see work flow over a               period of time.
+  <div class="small-6 columns" id="sessions-text">
+    gitThreeView is a project that takes your github repository and creates a 3D representation of your project based on the number of collaborators, days the project has been open and number of commits per day per person.
   </div>
+</div>
+
+<div class="row">
+    <div class="small-6 columns" id="button">
+        <%= link_to "Try it out", @demouser %>
+    </div>
+</div>
+<div class="row">
+    <div class="small-6 columns" id="button">
+        <%= link_to "Sign in",  @oauth_link %>
+    </div>
+</div>
 </div>
