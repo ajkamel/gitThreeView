@@ -187,6 +187,10 @@ function createGraph(data) {
         scene.add(title);
     }
 
+    function drawRepoLabel() {
+
+    }
+    
     function createTextCanvas(text, color, font, size) {
         size = size || 24;
         var canvas = document.createElement('canvas');
