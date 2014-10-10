@@ -3,10 +3,9 @@ function createGraph(data) {
     if (!Detector.webgl) Detector.addGetWebGLMessage();
     var clock = new THREE.Clock();
     // var SCREEN_HEIGHT = window.innerHeight;
-    // var SCREEN_WIDTH = window.innerWidth;
-    var SCREEN_HEIGHT = 450;
-    var SCREEN_WIDTH = 720;
-    // var stats, info = $('#barName');
+    var SCREEN_WIDTH = window.innerWidth - 400;
+    var SCREEN_HEIGHT = 650;
+    var stats, info = $('#barName');
     var camera, scene, projector, renderer, light, ambientLight;
     var grid = [];
     var paused = false;
