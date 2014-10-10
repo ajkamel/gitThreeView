@@ -26,4 +26,5 @@ group :development, :test do
     gem 'shoulda-matchers'
     gem 'capybara'
     gem 'simplecov', require: false
+    gem 'guard-livereload', require: false
 end

@@ -19,6 +19,8 @@ Three.js (webGL 3D framework)
 
 Tween.js (animate 3D models)
 
+Detector - (dectects webGL capable browsers)
+
 Underscore.js
 
 Postgresql

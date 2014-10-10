@@ -314,9 +314,9 @@ function createGraph(data) {
     }
 
     function onWindowResize(event) {
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setSize(document.getElementById('graph-canvas').offsetWidth, document.getElementById('graph-canvas').offsetWidth);
 
-        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.aspect = document.getElementById('graph-canvas').offsetWidth / document.getElementById('graph-canvas').offsetWidth;
         camera.updateProjectionMatrix();
 
         camera.lookAt(scene.position);
