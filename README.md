@@ -1,4 +1,5 @@
 #gitThreeView
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/ajkamel/gitThreeView?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 gitThreeView is a simple app which you can use to visualize your Github repositories in 3D.
 
